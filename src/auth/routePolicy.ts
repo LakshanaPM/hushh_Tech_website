@@ -30,7 +30,7 @@ export const PUBLIC_MARKETING_ROUTE_PREFIXES = [
   "/kai-india",
   "/studio",
   "/kyc-flow",
-  "/kyc-demo",
+  ...(import.meta.env.DEV ? ['/kyc-demo'] : []),
   "/a2a-playground",
 ] as const;
 

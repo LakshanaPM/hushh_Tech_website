@@ -53,7 +53,7 @@ const hiddenOnPages = [
   '/signup',
   '/auth',
   '/kyc-flow',
-  '/kyc-demo',
+  ...(import.meta.env.DEV ? ['/kyc-demo'] : []),
   '/a2a-playground',
   '/hushh-user-profile', // Hide nav on profile page for better UX (like onboarding)
 ];

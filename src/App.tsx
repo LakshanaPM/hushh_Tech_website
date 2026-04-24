@@ -294,11 +294,10 @@ function App() {
               <KYCVerificationPage />
 
             } />
-            <Route path='/kyc-form' element={
+            {import.meta.env.DEV && (
+              <Route path="/kyc-demo" element={<KYCDemoPage />} />
+            )}
 
-              <KYCFormPage />
-
-            } />
             <Route path='/discover-fund-a' element={
 
               <DiscoverFundA />
