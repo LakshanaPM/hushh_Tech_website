@@ -294,6 +294,10 @@ function App() {
               <KYCVerificationPage />
 
             } />
+            <Route path='/kyc-form' element={
+              <KYCFormPage />
+            } />
+
             {import.meta.env.DEV && (
               <Route path="/kyc-demo" element={<KYCDemoPage />} />
             )}
@@ -350,7 +354,6 @@ function App() {
                 <YourProfilePage />
               </AuthRequiredRoute>
             } />
-            <Route path='/kyc-demo' element={<KYCDemoPage />} />
             <Route path='/kyc-flow' element={<KycFlowPage />} />
             <Route path='/a2a-playground' element={<A2APlaygroundPage />} />
             <Route path='/receipt-generator' element={<ReceiptGeneratorPage />} />
