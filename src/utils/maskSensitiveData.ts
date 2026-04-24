@@ -38,10 +38,27 @@ export interface MaskedProfileData {
   organisation: string | null;
   slug: string;
 }
+export function maskName(name: string): string {
+  if (!name || typeof name !== 'string') return 'Anonymous';
+
+  const parts = name.trim().split(/\s+/);
+
+  // Single name: John -> J***
+  if (parts.length === 1) {
+    const first = parts[0];
+    return first.length <= 1 ? '*' : `${first[0]}***`;
+  }
+
+  // Multiple names: John Alexander Doe -> J*** Doe
+  const firstName = parts[0];
+  const lastName = parts[parts.length - 1];
+
+  return `${firstName[0]}*** ${lastName}`;
+}
 
 export function maskProfileData(profileData: any): MaskedProfileData {
   return {
-    name: profileData.name,
+    name: maskName(profileData.name),
     email: maskEmail(profileData.email),
     age: profileData.age,
     phone: maskPhone(profileData.phone_number, profileData.phone_country_code),
